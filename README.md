@@ -2,7 +2,7 @@
 <header>
   <p>O objetivo do <b>projeto</b> é criar um sistema para ver, adicionar, excluir e modificar produtos</p>
 </header>
-#Para fazer
+# Para fazer
   - [x] Sistema de login
   - [x] Recuperação de senha
   - [x] Página para <b>ver</b> os produtos
