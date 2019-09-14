@@ -78,18 +78,12 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="products.php">Products
+                                <a href="products.php">Produtos
 
                                 </a>
                             </li>
                             <li>
                                 <a href="adicionar-produto.php">Adicionar Produto</a>
-                            </li>
-                            <li>
-                                <a href="alterar-produto.php">Alterar Produto</a>
-                            </li>
-                            <li>
-                                <a href="deletar-produto.php">Deletar Produto</a>
                             </li>
                         </ul>
                     </div>

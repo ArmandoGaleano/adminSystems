@@ -1,10 +1,3 @@
-function linkEdit($forEdit, $forLink) {
-    if ($forEdit == 'edit') {
-        $('.linkEdit').each(function () {
-            $(this).attr('href', $forLink);
-        });
-    }
-}
 var startData = new FormData();
 startData.append("pesquisa", '');
 $.ajax({
@@ -15,8 +8,6 @@ $.ajax({
     contentType: false
 }).done(function (resposta) {
     $('#products').html(resposta);
-
-    linkEdit(edit, link); //setar variaveis antes e na pagina que quer
 });
 
 //------------

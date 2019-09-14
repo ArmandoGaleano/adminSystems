@@ -16,14 +16,16 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/alterarProduto.css">
 </head>
 
 <body>
     <div class="page-wrapper chiller-theme toggled">
         <?php include_once("assets/include/nav.php");?>
         <main class="page-content container-fluid">
-            <div class="row justify-content-center" id="products">
-
+            <div class="row p-0 m-0" id="products">
+                
             </div>
         </main>
     </div>
@@ -37,7 +39,7 @@
     <script src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="assets/js/nav.js"></script>
-    
+
     <!-- PAGINATION -->
     <script src="assets/js/pagination.js"></script>
 </body>

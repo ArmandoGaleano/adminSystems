@@ -1,0 +1,9 @@
+.products{
+    overflow: hidden;
+    border-radius: 20px!important;
+    height: 100%;
+}
+.detail{
+    background: #003d7c;
+    height: 100%;
+}

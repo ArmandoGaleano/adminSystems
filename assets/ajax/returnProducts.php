@@ -60,102 +60,109 @@ $qntPages = ceil($totalItens/$productsInPage);
 <?php
 foreach($rows as $row){
 ?>
-<div class="col-lg-4 col-md-6 col-sm-9 mb-4">
-
-    <div class="card product animateSlideUp">
-        <div class="imageLimiter">
-            <a id="<?php echo $row["produtoID"] ?>" href="detalhes.php?item=<?php echo $row['produtoID']?>" class="d-flex justify-content-center align-items-center border-bottom linkEdit"><img class="card-img-top" src="<?php echo $row["imagem1"];?>" alt="<?php echo $row["nomeProduto"];?>"></a>
+<!-- LIST ALL PRODUCTS -->
+<div class="col-md-6 col-lg-4 my-3">
+    <div class="products border border-bottom-0 shadow">
+        <div class="imageProduct d-flex justify-content-center">
+            <a href="detalhes.php?item=<?php echo $row['produtoID'];?>"><img class="img-fluid" src="<?php echo $row["imagem1"];?>" alt=""></a>
         </div>
-
-        <div class="card-body d-flex justify-content-center align-items-center flex-column">
-            <h4 class="card-title">
-                <a href="detalhes.php?item=<?php echo $row['produtoID']?>" class="text-white linkEdit"><?php echo $row["nomeProduto"] ?></a>
-            </h4>
-            <h5 class="text-success">R$ <?php echo number_format($row["preco"],2,',','.') ?></h5>
+        <div class="detail d-flex flex-column">
+            <h3 class="text-white text-center pt-4">
+                <a class="text-white" href="detalhes.php?item=<?php echo $row['produtoID'];?>"><?php echo $row["nomeProduto"];?></a>
+            </h3>
+            <h3 class="text-white text-center">
+                <a class="text-white" href="detalhes.php?item=<?php echo $row['produtoID'];?>">R$ <?php echo number_format($row["preco"],2,',','.') ?></a>
+            </h3>
+            <div class="d-flex justify-content-center flex-wrap pb-3">
+                <button onclick="window.location.href='alterar-produto.php'" class="btn btn-warning mx-2"><b><i class="fas fa-pencil-alt"></i> Modificar</b></button>
+                <button onclick="window.location.href='excluir.php'" class="btn btn-danger text-white mt-1 mx-2"><b><i class="fas fa-trash"></i> Deletar</b></button>
+            </div>
         </div>
     </div>
 </div>
 
 <?php }//FINAL LIST ?>
+<!-- PAGINATION LINKS -->
 <div class="w-100 d-flex justify-content-center">
     <nav>
         <ul class="pagination">
             <li class="page-item  <?php if($page == 1){echo 'disabled';}?>">
-                <div class="page-link" id="prev" onclick="changePageArrow(-1);">Prev</div>
+                <div class="page-link" id="prev" onclick="changePageArrow(-1);"><b>Prev</b></div>
             </li>
             <?php //Se a página for igual a 1
                 if($page == 1){?>
-               
-                    <li class="page-item paginator active">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page;?></div>
-                    </li>
 
-                    <?php if($qntPages > 1){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page+1;?></div>
-                    </li>
-                    <?php }?>
+            <li class="page-item paginator active">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page;?></b></div>
+            </li>
 
-                    <?php if($qntPages > 2){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page+2;?></div>
-                    </li>
-                    <?php }?>
-                
+            <?php if($qntPages > 1){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page+1;?></b></div>
+            </li>
             <?php }?>
-            
-            
+
+            <?php if($qntPages > 2){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page+2;?></b></div>
+            </li>
+            <?php }?>
+
+            <?php }?>
+
+
             <?php //Se a página não for igual a 1 e nem igual a última página
                 if($page != 1 && $page != $qntPages){?>
-            
-                   <?php if($qntPages > 1){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page-1;?></div>
-                    </li>
-                    <?php }?>
 
-                    <?php if($qntPages > 1){?>
-                    <li class="page-item paginator active">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page;?></div>
-                    </li>
-                    <?php }?>
-
-                    <?php if($qntPages > 2){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page+1;?></div>
-                    </li>
-                    <?php }?>
-                
+            <?php if($qntPages > 1){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page-1;?></b></div>
+            </li>
             <?php }?>
-            
-            
+
+            <?php if($qntPages > 1){?>
+            <li class="page-item paginator active">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page;?></b></div>
+            </li>
+            <?php }?>
+
+            <?php if($qntPages > 2){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page+1;?></b></div>
+            </li>
+            <?php }?>
+
+            <?php }?>
+
+
             <?php //Se a página for a última
                 if($page == $qntPages){?>
 
-                    <?php if($qntPages > 2){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page-2;?></div>
-                    </li>
-                    <?php }?>
+            <?php if($qntPages > 2){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page-2;?></b></div>
+            </li>
+            <?php }?>
 
-                    <?php if($qntPages > 1){?>
-                    <li class="page-item paginator">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page-1;?></div>
-                    </li>
-                    <?php }?>
+            <?php if($qntPages > 1){?>
+            <li class="page-item paginator">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page-1;?></b></div>
+            </li>
+            <?php }?>
 
-                    <?php if($qntPages > 1){?>
-                    <li class="page-item paginator active">
-                        <div class="page-link" onclick="changePage(this);"><?php echo $page;?></div>
-                    </li>
-                    <?php }?>
-                
+            <?php if($qntPages > 1){?>
+            <li class="page-item paginator active">
+                <div class="page-link" onclick="changePage(this);"><b><?php echo $page;?></b></div>
+            </li>
+            <?php }?>
+
             <?php }?>
 
 
             <li class="page-item <?php if($page == $qntPages){echo 'disabled';}?>">
-                <div class="page-link" id="next" onclick="changePageArrow(1);">Next</div>
+                <div class="page-link" id="next" onclick="changePageArrow(1);"><b>Next</b></div>
             </li>
         </ul>
     </nav>
+    <!-- PAGINATION LINKS END -->
 </div>
