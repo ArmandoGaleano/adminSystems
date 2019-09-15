@@ -3,6 +3,9 @@
   <p>O objetivo do <b>projeto</b> é criar um sistema para ver, adicionar, excluir e modificar produtos</p>
 </header>
 # Para fazer
+<br>
+[x] checked   # [checkbox:checked]
+<br>
 [x] Sistema de login
 <br>
   - [x] Recuperação de senha
