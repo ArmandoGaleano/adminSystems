@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="assets/css/alterarProduto.css">
+    <link rel = "icon" type = "imagem/x-icon" href = "assets/images/user.png"/>
 </head>
 
 <body>

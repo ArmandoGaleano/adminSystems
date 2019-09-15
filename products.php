@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="icon" type="imagem/x-icon" href="assets/images/user.png" />
 
     <link rel="stylesheet" href="assets/css/alterarProduto.css">
 </head>
@@ -25,7 +26,7 @@
         <?php include_once("assets/include/nav.php");?>
         <main class="page-content container-fluid">
             <div class="row p-0 m-0" id="products">
-                
+
             </div>
         </main>
     </div>
