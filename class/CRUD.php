@@ -197,5 +197,11 @@
             return $stmt->fetchAll();
 
         }
+        public function deleteProduct($id){
+            $stmt = $this->connDB()->prepare('DELETE FROM produtos WHERE produtoID = :id');
+            $stmt->bindValue(':id',$id);
+            $stmt->execute();
+            return $stmt;
+        }
     }
 ?>
