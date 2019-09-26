@@ -22,24 +22,7 @@
 
 <body>
 
-    <div class="page-wrapper chiller-theme toggled">
-
-        <?php include_once("assets/include/nav.php");?>
-        <main class="page-content container-fluid">
-            <div class="container-fluid">
-                <div class="row justify-content-center prodAlte">
-                    <h1>Selecione o <span class="spanColor">produto</span> para fazer <span class="spanColor">alterações</span></h1>
-                </div>
-            </div>
-            <div class="row justify-content-center" id="products">
-
-            </div>
-        </main>
-    </div>
-    <script>
-       var edit = 'edit';
-        var link = 'eCommerce/alterar.php'
-    </script>
+    
     <!-- JQUERY -->
     <script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
 
@@ -52,7 +35,6 @@
     <script src="assets/js/nav.js"></script>
 
     <!-- PAGINATION -->
-    <script src="assets/js/pagination.js"></script>
 
     
 </body>

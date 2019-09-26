@@ -203,5 +203,18 @@
             $stmt->execute();
             return $stmt;
         }
+        public function insertProduct($nomeProduto,$categoria,$imagem1,$imagem2,$imagem3,$detalhes,$modoDeUsar,$preco){
+            $sql = "INSERT INTO produtos values(DEFAULT,?,?,?,?,?,?,?,?)";
+            $stmt = $this->connDB()->prepare($sql);
+            $stmt->bindParam(1,$nomeProduto,PDO::PARAM_STR);
+            $stmt->bindParam(2,$categoria,PDO::PARAM_STR);
+            $stmt->bindParam(3,$imagem1,PDO::PARAM_STR);
+            $stmt->bindParam(4,$imagem2, isset( $imagem2 ) ? PDO::PARAM_STR : PDO::PARAM_NULL );
+            $stmt->bindParam(5,$imagem3, isset( $imagem2 ) ? PDO::PARAM_STR : PDO::PARAM_NULL );
+            $stmt->bindParam(6,$detalhes,PDO::PARAM_STR);
+            $stmt->bindParam(7,$modoDeUsar,isset( $modoDeUsar ) ? PDO::PARAM_STR : PDO::PARAM_NULL );
+            $stmt->bindParam(8,$preco,PDO::PARAM_STR);
+            $stmt->execute();
+        }
     }
 ?>

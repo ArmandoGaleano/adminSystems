@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*INPUT*/
+input.checkboxPerson {
+    visibility: hidden;
+}
+
+.labelPerson {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    min-width: 60px;
+    border: 1px solid #444444;
+    border-radius: 20px;
+    background: #0651a2;
+}
+
+.ball {
+    position: absolute;
+    left: -1px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #0651a2;
+    transition: left 0.3s;
+}
+.sanfona{
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.sanfonaDisable {
+    max-height: 0em;
+}
+
+.sanfonaActive {
+    max-height: 11em;
+}
+input[type=file]{
+    width: 120px;
+}

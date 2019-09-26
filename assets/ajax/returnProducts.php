@@ -71,7 +71,7 @@ foreach($rows as $row){
                 <a class="text-white" href="detalhes.php?item=<?php echo $row['produtoID'];?>"><?php echo $row["nomeProduto"];?></a>
             </h3>
             <h3 class="text-white text-center">
-                <a class="text-white" href="detalhes.php?item=<?php echo $row['produtoID'];?>">R$ <?php echo number_format($row["preco"],2,',','.') ?></a>
+                <a class="text-white" href="detalhes.php?item=<?php echo $row['produtoID'];?>">R$ <?php echo $row["preco"]; ?></a>
             </h3>
             <div class="d-flex justify-content-center flex-wrap pb-3">
                 <button onclick="window.location.href='alterar-produto.php'" class="btn btn-warning mx-2"><b><i class="fas fa-pencil-alt"></i> Modificar</b></button>
