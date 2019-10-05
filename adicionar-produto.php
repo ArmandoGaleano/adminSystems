@@ -3,131 +3,29 @@ require_once('assets/include/authorization.php');
 require_once("class/Connection.php");
 require_once("class/CRUD.php");
 $CRUD = new CRUD();
+//functions
+require_once('assets/include/functions.php');
+if(isset($_POST['nomeProduto'])){
+    $nome           = $_POST['nomeProduto'];
+    $categoria      = $_POST['select'];
+    $preco          = $_POST['preco'];
+    $description    = $_POST['description'];
+    $inputImg       = [];
+   if(isset($_POST['modoUsar'])){
+    $modoUsar       = $_POST['modoDeUsar'];
+   }
+   else{
+    $modoUsar = '';
+   }
 
- if(isset($_POST['nomeProduto'])){
-     $fileLength = count($_FILES);
-     $imagesWithoutError = [];
-     function validateImg($nameFile,$tmpFile,$indexFile){
-         $name = $nameFile;
-         $tmp = $tmpFile;
-         $widthImg = getimagesize($tmp)[0];
-         $heightImg = getimagesize($tmp)[1];
-         if($widthImg <= 348 && $heightImg <= 280){
-             global $imagesWithoutError;
-             array_push($imagesWithoutError,'true');
-          
-         }
-          else{
-              $error[$indexFile] = 'As Dimenções não são 348x280';
-              $numberImage = strlen($indexFile);
-              global $alert;
-              $alert[] = "As Dimenções da ".$indexFile[$numberImage-1]."° imagem não são 348x280";
-          }
-     }
-     //Validation of images
-     if(isset($_FILES['img1']) && !empty($_FILES['img1']['tmp_name'])){
-         $img1 = $_FILES['img1'];
-         validateImg($img1['name'],$img1['tmp_name'],'img1');
-         
-        if(isset($_FILES['img2'])  && !empty($_FILES['img2']['tmp_name'])){
-            $img2 = $_FILES['img2'];
-            validateImg($img2['name'],$img2['tmp_name'],'img2');
-            
-            if(isset($_FILES['img3'])  && !empty($_FILES['img3']['tmp_name'])){
-                $img3 = $_FILES['img3'];
-                validateImg($img3['name'],$img3['tmp_name'],'img3');
-            }
-        }
-        
-     }else{
-         $mainImg = 'Escolha a foto principal';
-         $alert[] = "Foto principal não foi selecionada!";
-     }
-     $pathImg = [];
-     function insertIntoImgPaste($name,$tmp){
-            $nameF = $name;
-            $tmpF = $tmp;
-            //Upload image for server
-            $nameEx = explode('.',$nameF);
-            $ext  = end($nameEx);
-            $pasta        ='assets/images/produtos/jpg/'; //Pasta onde a imagem será salva
 
-            $permiti  = array('jpg', 'jpeg', 'png');
-            $nameF = uniqid().'.'.$ext; 
-            $uid = uniqid();
-        
-            $widthImg = getimagesize($tmpF)[0];
-            $heightImg = getimagesize($tmpF)[1];
-            //return path image
-            global $pathImg;
-            array_push($pathImg,$pasta . $nameF);
-            //Upload image for server
-            $upload   = move_uploaded_file($tmpF, $pasta.'/'.$nameF);
-          
-            }
-     //Validation data of product
-     function validationData($postProduct){
-        if(isset($postProduct) && !empty($postProduct)){
-            return true;
-        }else{
-            return false;
-        }
-     }
-     if(validationData($_POST['nomeProduto'])){
-        $nome = $_POST['nomeProduto'];
-     }else{
-       $alert[] = "Necessário definir um nome ao produto";
-     }
-     if(validationData($_POST['select'])){
-        $categoria = $_POST['select'];
-     }else{
-       $categoria = '';
-     }
-     if(validationData($_POST['preco'])){
-        $preco = $_POST['preco'];
-    }else{
-      $alert[] = "Necessário definir um preço ao produto";
+    $form = new form($nome,$categoria,$preco,$description,$modoUsar,$_FILES);
+
+    $form->createProduct();
+    if(empty($form->error)){
+        header('Location:products.php');
     }
-    if(validationData($_POST['description'])){
-        $description = $_POST['description'];
-    }else{
-      $alert[] = "Necessário dar uma descrição sobre o produto";
-    }
-    if(validationData($_POST['modoDeUsar'])){
-        $modoUsar = $_POST['modoDeUsar'];
-    }else{
-        $modoUsar = '';
-    }
-     //add images in paste
-     if(count($imagesWithoutError) === $fileLength && !isset($alert)){
-         if(
-            isset($nome) && 
-            isset($nome) && 
-            isset($description) && 
-            isset($modoUsar) &&
-            isset($preco)
-            ){
-            foreach($_FILES as $item){
-                $name = $item['name'];
-                $tmp = $item['tmp_name'];
-                insertIntoImgPaste($name,$tmp);
-            }
-            if(count($pathImg) === 1){
-                $CRUD->insertProduct($nome,$categoria,$pathImg[0],null,null,$description,$modoUsar,$preco);
-                $statusProduct = "O produto foi adicionado com sucesso!";
-            }
-            else if(count($pathImg) === 2){
-                $CRUD->insertProduct($nome,$categoria,$pathImg[0],$pathImg[1],null,$description,$modoUsar,$preco);
-                $statusProduct = "O produto foi adicionado com sucesso!";
-            }
-            else if(count($pathImg) === 3){
-                $CRUD->insertProduct($nome,$categoria,$pathImg[0],$pathImg[1],$pathImg[2],$description,$modoUsar,$preco);
-                $statusProduct = "O produto foi adicionado com sucesso!";
-            }else{
-                $statusProduct = "Erro ao adicionar o produto!";
-            }
-        }
-    }
+    
   }
 ?>
 
@@ -162,7 +60,7 @@ $CRUD = new CRUD();
                         <input type="file" class="inputImg" name='img1' id="cb1">
 
                         <?php
-                        if(isset($erro['img1'])){echo $erro[0];}
+                        if(isset($error['img1'])){echo '<h5 class="text-danger">'.$error['img1'].'</h5>';}
                         if(isset($mainImg)){echo '<h4 class="text-danger">'.$mainImg.'</h4>';}
                     ?>
                     </div>
@@ -181,7 +79,9 @@ $CRUD = new CRUD();
                                 <img src="" class="preview-img img-fluid" id='imgPreview'>
                             </div>
                             <input name="img2" class="inputImg" type="file" id="img2">
-
+                            <?php
+                            if(isset($error['img2'])){echo '<h5 class="text-danger">'.$error['img2'].'</h5>';}
+                            ?>
                         </div>
 
                     </div>
@@ -203,8 +103,8 @@ $CRUD = new CRUD();
                             </div>
                             <input name="img3" class="inputImg" type="file">
 
-                            <?php
-                        if(isset($erro)){echo $erro[2];}
+                        <?php
+                        if(isset($error['img3'])){echo '<h5 class="text-danger">'.$error['img3'].'</h5>';}
                         ?>
                         </div>
 
@@ -284,9 +184,9 @@ $CRUD = new CRUD();
 
     <?php 
         //if have alerts, echo alerts;
-        if(isset($alert)){
+        if(!empty($form->error)){
             $menssageAlert = '';
-            foreach($alert as $i){
+            foreach($form->error as $i){
                 $class = "class='text-danger border-bottom pb-2'";
                 $menssageAlert .= '<h5 '.$class.'>'.$i.'</h5>';
                 
@@ -296,6 +196,10 @@ $CRUD = new CRUD();
         if(isset($statusProduct)){
             $menssageStatus = "<h5 class='text-success'>".$statusProduct."</h5>";
             echo '<script> bootbox.alert("'.$menssageStatus.'") </script>';
+        }
+        if(!empty($dataProduct['imagem3'])){
+            $pathImg = $dataProduct["imagem3"];
+            echo '<script> enableMoreImg("'.$pathImg.'") </script>';
         }
     ?>
 

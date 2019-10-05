@@ -216,5 +216,18 @@
             $stmt->bindParam(8,$preco,PDO::PARAM_STR);
             $stmt->execute();
         }
+        public function updateProducts($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$param){
+            $sql = "UPDATE produtos set nomeProduto = ?,categoria = ?,imagem1 = ?,imagem2 = ?,imagem3 = ?,detalhes = ?,modoDeUsar = ?,preco = ? WHERE produtoid = $param";
+            $stmt = $this->connDB()->prepare($sql);
+            $stmt->bindParam(1,$c1,PDO::PARAM_STR);
+            $stmt->bindParam(2,$c2,PDO::PARAM_STR);
+            $stmt->bindParam(3,$c3,PDO::PARAM_STR);
+            $stmt->bindParam(4,$c4,PDO::PARAM_STR);
+            $stmt->bindParam(5,$c5,PDO::PARAM_STR);
+            $stmt->bindParam(6,$c6,PDO::PARAM_STR);
+            $stmt->bindParam(7,$c7,PDO::PARAM_STR);
+            $stmt->bindParam(8,$c8,PDO::PARAM_STR);
+            $stmt->execute();
+        }
     }
 ?>

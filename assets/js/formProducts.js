@@ -38,7 +38,7 @@ window.onchange = function (e) {
     openAndCloseSanfona();
 }
 
-function openAndCloseSanfona(div, status, input) {
+function openAndCloseSanfona(div, status) {
     if (status) {
         $(div).removeClass('sanfonaDisable');
         $(div).addClass('sanfonaActive');
@@ -48,18 +48,20 @@ function openAndCloseSanfona(div, status, input) {
 
         $(div).removeClass('sanfonaActive');
         $(div).addClass('sanfonaDisable');
+        
         setTimeout(function () {
-            resetInput(div, status); //resetInput
+            resetInput(div, status,$('#cb3')); //resetInput
         }, 100);
 
     }
 }
 
-function resetInput(div, status) {
+function resetInput(div, status,input) {
     if (status) {
         $(div).find('input').attr('type', 'file');
     } else {
         $(div).find('input').attr('type', 'hidden');
+        $(input).removeAttr('checked');
         $(div).find('img').attr('src', '');
     }
 }
