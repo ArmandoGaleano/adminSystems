@@ -13,7 +13,7 @@
    - [x] Redefinição de senha
    <br>
 - [x] Listagem dos produtos
-   - [ ] Página para <b>editar</b> dados do produto
+   - [x] Página para <b>editar</b> dados do produto
    - [x] Botão para <b>deletar</b> produto
    <br>
 - [x] Página para adicionar produtos
