@@ -14,9 +14,9 @@
    <br>
 - [x] Listagem dos produtos
    - [ ] Página para <b>editar</b> dados do produto
-   - [ ] Botão para <b>deletar</b> produto
+   - [x] Botão para <b>deletar</b> produto
    <br>
-- [ ] Página para adicionar produtos
+- [x] Página para adicionar produtos
 - [ ] Listar usuários com os respectivos dados cadastrais
 <h1>Como instalar?</h1>
 <div>
