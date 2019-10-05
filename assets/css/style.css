@@ -7,3 +7,6 @@
     background: #003d7c;
     height: 100%;
 }
+.page-link{
+    cursor:pointer;
+}

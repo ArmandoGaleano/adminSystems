@@ -75,7 +75,7 @@ foreach($rows as $row){
             </h3>
             <div class="d-flex justify-content-center flex-wrap pb-3">
                 <button onclick="window.location.href='alterar-produto.php?produto=<?php echo $row['produtoID']?>'" class="btn btn-warning mx-2"><b><i class="fas fa-pencil-alt"></i> Modificar</b></button>
-                <button onclick="menssageDelete('<?php echo $row['nomeProduto'] ;?>','<?php echo $row['produtoID'];?>','<?php echo $row["imagem1"];?>');" class="btn btn-danger text-white mt-1 mx-2"><b><i class="fas fa-trash"></i> Deletar</b></button>
+                <button onclick="menssageDelete('<?php echo $row['nomeProduto'] ;?>','<?php echo $row['produtoID'];?>','<?php echo $row['imagem1'];?>');" class="btn btn-danger text-white mt-1 mx-2"><b><i class="fas fa-trash"></i> Deletar</b></button>
             </div>
         </div>
     </div>
