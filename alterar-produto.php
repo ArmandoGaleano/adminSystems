@@ -25,7 +25,7 @@ $dataProduct = $CRUD->select('*','produtos','produtoID',$productId);
    if(isset($_POST['inputImg2'])){
     $inputImg[] = 2;
    }
-   if(isset($_POST['modoUsar'])){
+   if(isset($_POST['modoDeUsar'])){
     $modoUsar       = $_POST['modoDeUsar'];
    }
    else{
@@ -163,7 +163,7 @@ $dataProduct = $CRUD->select('*','produtos','produtoID',$productId);
 
                         <div class="col-12 p-0">
                             <div class="d-flex align-items-center py-3">
-                                <input class="checkboxPerson" id="cb4" name="modoUsar" type="checkbox" <?php if(!empty($dataProduct['modoDeUsar'])){echo 'checked';}?>>
+                                <input class="checkboxPerson" id="cb4" name="modoDeUsar" type="checkbox" <?php if(!empty($dataProduct['modoDeUsar'])){echo 'checked';}?>>
                                 <label class="labelPerson" for="cb4" <?php if(!empty($dataProduct['modoDeUsar'])){echo 'style="background:#0078f9"';}?>>
                                     <div class="ball" <?php if(!empty($dataProduct['modoDeUsar'])){echo 'style="left:30px"';}?>></div>
                                 </label>
@@ -180,7 +180,7 @@ $dataProduct = $CRUD->select('*','produtos','produtoID',$productId);
                         </div>
                     </div>
                     <button class="btn btn-primary shadow ml-5 mt-5 mb-5">
-                        <b style="font-size: 20px;">Cadastrar Produto</b>
+                        <b style="font-size: 20px;">Alterar Produto</b>
                     </button>
                 </form>
 

@@ -4,7 +4,7 @@
     require_once("class/CRUD.php");
     require_once("class/SessionAdmin.php");
 if(isset($_SESSION['adminUser'])){
-    header('location: home.php');
+    header('location: products.php');
 }
 
 $cookieEmailAdmin = (isset($_COOKIE['CookieEmailAdmin'])) ? base64_decode($_COOKIE['CookieEmailAdmin']) : '';

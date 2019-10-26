@@ -5,7 +5,7 @@
         
        protected function connDB(){
             try{
-                $conn = new PDO('mysql:host=localhost;dbname=db;charset=utf8',$this->userDB,$this->passDB);
+                $conn = new PDO('mysql:host=localhost;dbname=db-teste;charset=utf8',$this->userDB,$this->passDB);
                 $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
                 return $conn;
             }

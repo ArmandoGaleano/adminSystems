@@ -229,5 +229,15 @@
             $stmt->bindParam(8,$c8,PDO::PARAM_STR);
             $stmt->execute();
         }
+        public function updateUserAdmin($name,$email,$password,$phone,$userID){
+            $sql = "UPDATE adminusers set adminName = ?,adminEmail = ?, adminPassword = ?, adminPhone = ? WHERE userAdminID = ?";
+            $stmt = $this->connDB()->prepare($sql);
+            $stmt->bindParam(1,$name,PDO::PARAM_STR);
+            $stmt->bindParam(2,$email,PDO::PARAM_STR);
+            $stmt->bindParam(3,$password,PDO::PARAM_STR);
+            $stmt->bindParam(4,$phone,PDO::PARAM_STR);
+            $stmt->bindParam(5,$userID,PDO::PARAM_INT);
+            $stmt->execute();
+        }
     }
 ?>

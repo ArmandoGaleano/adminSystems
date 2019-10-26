@@ -25,7 +25,7 @@
             if($this->checkEmailPass()){
                 $userID = $this->select('userAdminID','adminusers','adminEmail',$this->email);
                 $_SESSION['adminUser'] = $userID['userAdminID'];
-                header('location: home.php');
+                header('location: products.php');
             }   
         }
     }

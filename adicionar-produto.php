@@ -11,7 +11,7 @@ if(isset($_POST['nomeProduto'])){
     $preco          = $_POST['preco'];
     $description    = $_POST['description'];
     $inputImg       = [];
-   if(isset($_POST['modoUsar'])){
+   if(isset($_POST['modoDeUsar'])){
     $modoUsar       = $_POST['modoDeUsar'];
    }
    else{

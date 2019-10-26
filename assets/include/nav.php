@@ -73,7 +73,7 @@
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
                         <span>E-commerce</span>
-                        <span class="badge badge-pill badge-danger">3</span>
+                        <span class="badge badge-pill badge-danger"><?php echo count($CRUD->simpleSelect("*","produtos"))?></span>
                     </a>
                     <div class="sidebar-submenu">
                         <ul>
@@ -187,7 +187,7 @@
             <i class="fa fa-envelope"></i>
             <span class="badge badge-pill badge-success notification">7</span>
         </a>
-        <a href="#">
+        <a href="alterar-cadastro.php">
             <i class="fa fa-cog"></i>
             <span class="badge-sonar"></span>
         </a>
